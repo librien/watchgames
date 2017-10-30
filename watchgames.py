@@ -19,8 +19,6 @@ data = requests.get(api_url).json()
 for game in data['dates'][0]['games']:
     if (game['teams']['away']['team']['name'] == team_name) or (game['teams']['home']['team']['name'] == team_name):
         print(game['teams']['away']['team']['name'] + ' at ' + game['teams']['home']['team']['name'])
-        #game_time = str(game['gameDate']).replace('Z', 'UTC') # replace Zulu timezone with UTC for Python's timestamp conversion
-        #game_time = datetime.datetime.strptime(game_time, "%Y-%m-%dT%H:%M:%S%Z") # convert string to timestamp
         game_time = datetime.datetime.strptime(game['gameDate'], "%Y-%m-%dT%H:%M:%SZ") # convert string to timestamp
         print(game_time)
 
